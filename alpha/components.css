@@ -1,1 +1,97 @@
+/*
+=========================================
+Anchor Alpha Design System
+=========================================
+*/
 
+:root {
+  --bg: #07111f;
+  --surface: rgba(255,255,255,.08);
+  --surface-strong: rgba(255,255,255,.12);
+
+  --text: #fff7eb;
+  --muted: #cabfae;
+
+  --gold: #e6bd68;
+  --gold-light: #f6d992;
+  --green: #8dbd93;
+
+  --border: rgba(255,255,255,.12);
+
+  --radius: 28px;
+  --radius-small: 18px;
+
+  --shadow: 0 24px 80px rgba(0,0,0,.30);
+
+  --content-width: 760px;
+
+  --speed: .35s;
+}
+
+/* Reusable Alpha Card */
+.anchor-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+  padding: 24px;
+}
+
+/* Section Headings */
+.anchor-section-title {
+  color: var(--gold);
+  font-weight: 900;
+  margin: 0 0 12px;
+}
+
+/* Gentle fade-up animation */
+.fade-up {
+  animation: fadeUp var(--speed) ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quiet loading / searching state */
+.scripture-searching {
+  text-align: center;
+  padding: 28px;
+  color: var(--text);
+}
+
+.scripture-searching strong {
+  display: block;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.scripture-searching em {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Future result cards */
+.scripture-card,
+.reflection-card,
+.prayer-card,
+.step-card,
+.reading-card,
+.before-you-go-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
