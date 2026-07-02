@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   button.addEventListener("click", () => {
     const input = document.getElementById("struggle").value;
-
     const match = findVerses(input);
 
     if (!match) {
@@ -29,19 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    document.getElementById("resultVerse").textContent =
-      match.verses.join("\n\n");
-
-    document.getElementById("resultRef").textContent =
-      match.title;
-
-    document.getElementById("reflection").textContent =
-      match.reflection;
-
-    document.getElementById("prayer").textContent =
-      match.prayer;
-
+    document.getElementById("resultVerse").textContent = match.verses.join("\n\n");
+    document.getElementById("resultRef").textContent = match.title;
+    document.getElementById("reflection").textContent = match.reflection;
+    document.getElementById("prayer").textContent = match.prayer;
     document.getElementById("challenge").textContent =
-      match.challenge;
+      match.challenge + "\n\nContinue Reading: " + match.continueReading.join(", ");
   });
 });
