@@ -1,1 +1,31 @@
-/* Anchor Faith styles will go here */
+.result {
+  white-space: pre-line;
+}
+
+.result-card,
+.app-card.result {
+  animation: fadeUp 0.5s ease;
+}
+
+#resultVerse {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+#reflection,
+#prayer,
+#challenge {
+  line-height: 1.7;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
