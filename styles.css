@@ -29,3 +29,87 @@
     transform: translateY(0);
   }
 }
+body {
+  background:
+    radial-gradient(circle at top left, rgba(230, 189, 104, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(134, 183, 141, 0.14), transparent 28%),
+    linear-gradient(135deg, #0d1726 0%, #132238 45%, #07111f 100%);
+}
+
+.hero h1,
+h1 {
+  letter-spacing: -0.04em;
+}
+
+.app-card {
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 243, 214, 0.14);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.input-box {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+}
+
+textarea {
+  min-height: 130px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn,
+button.btn {
+  background: linear-gradient(135deg, var(--gold), #f4d58c);
+  color: #1b1204;
+  box-shadow: 0 12px 30px rgba(230, 189, 104, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+button.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(230, 189, 104, 0.34);
+}
+
+.chip {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 243, 214, 0.16);
+}
+
+.section-label,
+.result-section h3 {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.result-section p {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 243, 214, 0.1);
+}
+
+#resultRef {
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .hero h1,
+  h1 {
+    font-size: clamp(2.3rem, 11vw, 4rem);
+  }
+
+  .app-card {
+    border-radius: 22px;
+  }
+
+  .btn,
+  button.btn {
+    width: 100%;
+  }
+}
