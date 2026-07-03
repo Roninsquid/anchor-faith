@@ -1,131 +1,233 @@
-console.log("Anchor Alpha ready.");
+/*
+=========================================
+ANCHOR DESIGN SYSTEM
+A place to begin again.
+=========================================
+*/
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   Variables
+========================= */
 
-  // =========================
-  // Time-based Greeting
-  // =========================
+:root {
+  --bg: #07111f;
 
-  const greeting = document.getElementById("dailyGreeting");
+  --surface: rgba(255,255,255,.08);
 
-  if (greeting) {
+  --text: #fff7eb;
 
-    const hour = new Date().getHours();
+  --muted: #cabfae;
 
-    const greetings = {
-      night: [
-        "You're not alone tonight.",
-        "Rest here for a while.",
-        "Peace be with you."
-      ],
+  --gold: #e6bd68;
 
-      morning: [
-        "Good morning.",
-        "His mercies are new every morning.",
-        "Peace be with you."
-      ],
+  --border: rgba(255,255,255,.12);
 
-      afternoon: [
-        "Welcome.",
-        "Take heart.",
-        "Grace be with you today."
-      ],
+  --radius: 28px;
 
-      evening: [
-        "The day is ending.",
-        "Come and rest.",
-        "Peace be with you."
-      ]
-    };
+  --shadow: 0 24px 80px rgba(0,0,0,.30);
 
-    let options;
+  --speed: .35s;
+}
 
-    if (hour < 5) {
-      options = greetings.night;
-    }
-    else if (hour < 12) {
-      options = greetings.morning;
-    }
-    else if (hour < 17) {
-      options = greetings.afternoon;
-    }
-    else {
-      options = greetings.evening;
-    }
 
-    const randomGreeting =
-      options[Math.floor(Math.random() * options.length)];
+/* =========================
+   Cards
+========================= */
 
-    greeting.textContent = randomGreeting;
+.scripture-card{
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  padding:28px;
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:blur(22px);
+
+  text-align:left;
+}
+
+
+/* =========================
+   Typography
+========================= */
+
+.anchor-section-title{
+
+  color:var(--gold);
+
+  font-weight:800;
+
+  margin-bottom:18px;
+
+}
+
+.scripture-card blockquote{
+
+  margin:0;
+
+  font-size:clamp(1.45rem,4vw,2rem);
+
+  line-height:1.6;
+
+}
+
+.scripture-ref{
+
+  color:var(--gold);
+
+  font-weight:700;
+
+  margin-top:22px;
+
+}
+
+.scripture-divider{
+
+  height:1px;
+
+  background:rgba(255,255,255,.08);
+
+  margin:28px 0;
+
+}
+
+.scripture-note{
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-style:italic;
+
+  line-height:1.8;
+
+}
+
+
+/* =========================
+   Quiet Moment
+========================= */
+
+.quiet-message{
+
+  margin-top:24px;
+
+  color:var(--muted);
+
+  text-align:center;
+
+  line-height:1.8;
+
+  font-style:italic;
+
+  opacity:0;
+
+  transition:opacity .5s ease;
+
+}
+
+.quiet-message.show{
+
+  opacity:1;
+
+}
+
+
+/* =========================
+   Utilities
+========================= */
+
+.hidden{
+
+  display:none;
+
+}
+
+.fade-out{
+
+  opacity:0;
+
+  transform:translateY(-8px);
+
+  transition:
+    opacity .45s ease,
+    transform .45s ease;
+
+  pointer-events:none;
+
+}
+
+
+/* =========================
+   Animations
+========================= */
+
+.fade-up{
+
+  animation:fadeUp .45s ease;
+
+}
+
+@keyframes fadeUp{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(14px);
+
   }
 
+  to{
 
-  // =========================
-  // Guide Through Scripture
-  // =========================
+    opacity:1;
 
-  const guideButton =
-    document.getElementById("guideButton");
-
-  const scriptureCard =
-    document.getElementById("scriptureCard");
-
-  const quietMoment =
-    document.getElementById("quietMoment");
-
-  const anchorMark =
-    document.getElementById("anchorMark");
-
-
-  if (
-    guideButton &&
-    scriptureCard &&
-    quietMoment &&
-    anchorMark
-  ) {
-
-    guideButton.addEventListener("click", () => {
-
-      // Update button
-      guideButton.textContent =
-        "📖 Guiding You Through Scripture...";
-
-      // Gentle Anchor Breath
-      anchorMark.classList.add("anchor-breath");
-
-      // Show quiet moment
-      quietMoment.classList.remove("hidden");
-
-      requestAnimationFrame(() => {
-        quietMoment.classList.add("show");
-      });
-
-
-      // Pause before revealing Scripture
-      setTimeout(() => {
-
-        quietMoment.classList.remove("show");
-
-        setTimeout(() => {
-          quietMoment.classList.add("hidden");
-        }, 500);
-
-        scriptureCard.classList.remove("hidden");
-
-        guideButton.classList.add("fade-out");
-
-        scriptureCard.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-
-        // Reset anchor animation
-        anchorMark.classList.remove("anchor-breath");
-
-      }, 1200);
-
-    });
+    transform:translateY(0);
 
   }
 
-});
+}
+
+
+/* =========================
+   Anchor Breath
+========================= */
+
+.anchor-breath{
+
+  animation:anchorBreath 1.2s ease;
+
+}
+
+@keyframes anchorBreath{
+
+  0%{
+
+    transform:scale(1);
+
+    box-shadow:0 0 0 rgba(230,189,104,0);
+
+  }
+
+  50%{
+
+    transform:scale(1.08);
+
+    box-shadow:
+      0 0 45px rgba(230,189,104,.45);
+
+  }
+
+  100%{
+
+    transform:scale(1);
+
+    box-shadow:0 0 0 rgba(230,189,104,0);
+
+  }
+
+}
