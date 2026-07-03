@@ -123,3 +123,9 @@ Anchor Alpha Design System
 .hidden {
   display: none;
 }
+.fade-out {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .45s ease, transform .45s ease;
+  pointer-events: none;
+}
