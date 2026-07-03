@@ -95,3 +95,28 @@ Anchor Alpha Design System
   box-shadow: var(--shadow);
   backdrop-filter: blur(22px);
 }
+.scripture-divider {
+  height: 1px;
+  background: rgba(255,255,255,.08);
+  margin: 28px 0;
+}
+
+.scripture-note {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.scripture-ref {
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 18px;
+}
+
+.scripture-card blockquote {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+}
