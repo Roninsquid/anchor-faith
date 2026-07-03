@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anchor Alpha</title>
+  <title>Anchor</title>
   <link rel="stylesheet" href="components.css">
 
   <style>
@@ -156,6 +156,7 @@
     .breath {
       color: rgba(255, 243, 214, 0.62);
       font-size: 0.95rem;
+      line-height: 1.7;
     }
 
     @media (max-width: 560px) {
@@ -178,12 +179,11 @@
 
     <div>
       <p class="eyebrow">ANCHOR</p>
+      <h1 id="dailyGreeting">Peace be with you.</h1>
 
-<h1 id="dailyGreeting">Peace be with you.</h1>
-
-<p class="helper-text" style="text-align:center; margin-top:18px;">
-  A place to begin again.
-</p>
+      <p class="helper-text" style="text-align:center; margin-top:18px;">
+        A place to begin again.
+      </p>
     </div>
 
     <p class="sub">
@@ -196,16 +196,16 @@
     </p>
 
     <section class="search-card">
-      <label for="heartInput">
-  What is weighing on your heart today?
-</label>
+      <label for="heartInput">What is weighing on your heart today?</label>
 
-<p class="helper-text">
-  God already knows your heart.
-  This is simply a place to begin.
-</p>
+      <p class="helper-text">
+        God already knows your heart. This is simply a place to begin.
+      </p>
 
-      <textarea id="heartInput" placeholder="I’m feeling anxious, grieving, overwhelmed, doubtful, angry, or unsure where to begin..."></textarea>
+      <textarea
+        id="heartInput"
+        placeholder="I’m feeling anxious, grieving, overwhelmed, doubtful, angry, or unsure where to begin..."
+      ></textarea>
 
       <button id="guideButton">📖 Guide Me Through Scripture</button>
     </section>
@@ -230,9 +230,10 @@
       </p>
     </section>
 
-    <p class="breath">Take a deep breath.
-
-                 Peace be with you today.</p>
+    <p class="breath">
+      Take a deep breath.<br>
+      Peace be with you today.
+    </p>
   </main>
 
   <script src="app.js"></script>
