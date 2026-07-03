@@ -231,3 +231,27 @@ A place to begin again.
   }
 
 }
+.breath-line {
+  width: 0%;
+  height: 2px;
+  margin: 18px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.breath-line.show {
+  opacity: 1;
+  animation: breathLine 1.2s ease forwards;
+}
+
+@keyframes breathLine {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 72%;
+  }
+}
