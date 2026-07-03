@@ -1,6 +1,6 @@
 Anchor Vision
 
-«Anchor is not built to maximize attention. It is built to help people return their attention to God.»
+> **Anchor is not built to maximize attention. It is built to help people return their attention to God.**
 
 Why Anchor Exists
 
