@@ -1,167 +1,131 @@
-/*
-=========================================
-Anchor Alpha Design System
-=========================================
-*/
+console.log("Anchor Alpha ready.");
 
-:root {
-  --bg: #07111f;
-  --surface: rgba(255,255,255,.08);
-  --surface-strong: rgba(255,255,255,.12);
+document.addEventListener("DOMContentLoaded", () => {
 
-  --text: #fff7eb;
-  --muted: #cabfae;
+  // =========================
+  // Time-based Greeting
+  // =========================
 
-  --gold: #e6bd68;
-  --gold-light: #f6d992;
-  --green: #8dbd93;
+  const greeting = document.getElementById("dailyGreeting");
 
-  --border: rgba(255,255,255,.12);
+  if (greeting) {
 
-  --radius: 28px;
-  --radius-small: 18px;
+    const hour = new Date().getHours();
 
-  --shadow: 0 24px 80px rgba(0,0,0,.30);
+    const greetings = {
+      night: [
+        "You're not alone tonight.",
+        "Rest here for a while.",
+        "Peace be with you."
+      ],
 
-  --content-width: 760px;
+      morning: [
+        "Good morning.",
+        "His mercies are new every morning.",
+        "Peace be with you."
+      ],
 
-  --speed: .35s;
-}
+      afternoon: [
+        "Welcome.",
+        "Take heart.",
+        "Grace be with you today."
+      ],
 
-/* Reusable Alpha Card */
-.anchor-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(22px);
-  padding: 24px;
-}
+      evening: [
+        "The day is ending.",
+        "Come and rest.",
+        "Peace be with you."
+      ]
+    };
 
-/* Section Headings */
-.anchor-section-title {
-  color: var(--gold);
-  font-weight: 900;
-  margin: 0 0 12px;
-}
+    let options;
 
-/* Gentle fade-up animation */
-.fade-up {
-  animation: fadeUp var(--speed) ease both;
-}
+    if (hour < 5) {
+      options = greetings.night;
+    }
+    else if (hour < 12) {
+      options = greetings.morning;
+    }
+    else if (hour < 17) {
+      options = greetings.afternoon;
+    }
+    else {
+      options = greetings.evening;
+    }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+    const randomGreeting =
+      options[Math.floor(Math.random() * options.length)];
+
+    greeting.textContent = randomGreeting;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* Quiet loading / searching state */
-.scripture-searching {
-  text-align: center;
-  padding: 28px;
-  color: var(--text);
-}
+  // =========================
+  // Guide Through Scripture
+  // =========================
 
-.scripture-searching strong {
-  display: block;
-  color: var(--gold);
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
+  const guideButton =
+    document.getElementById("guideButton");
 
-.scripture-searching em {
-  color: var(--muted);
-  line-height: 1.7;
-}
+  const scriptureCard =
+    document.getElementById("scriptureCard");
 
-/* Future result cards */
-.scripture-card,
-.reflection-card,
-.prayer-card,
-.step-card,
-.reading-card,
-.before-you-go-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(22px);
-}
-.scripture-divider {
-  height: 1px;
-  background: rgba(255,255,255,.08);
-  margin: 28px 0;
-}
+  const quietMoment =
+    document.getElementById("quietMoment");
 
-.scripture-note {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  line-height: 1.8;
-}
+  const anchorMark =
+    document.getElementById("anchorMark");
 
-.scripture-ref {
-  color: var(--gold);
-  font-weight: 700;
-  margin-top: 18px;
-}
 
-.scripture-card blockquote {
-  margin: 0;
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  line-height: 1.45;
-  letter-spacing: -0.03em;
-}
-.hidden {
-  display: none;
-}
-.fade-out {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity .45s ease, transform .45s ease;
-  pointer-events: none;
-}
-.quiet-message {
-  margin-top: 22px;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1.8;
-  font-style: italic;
-  opacity: 0;
-  transition: opacity .5s ease;
-}
+  if (
+    guideButton &&
+    scriptureCard &&
+    quietMoment &&
+    anchorMark
+  ) {
 
-.quiet-message.show {
-  opacity: 1;
-}
-.anchor-breath {
-  animation: anchorBreath 1.2s ease;
-}
+    guideButton.addEventListener("click", () => {
 
-@keyframes anchorBreath {
+      // Update button
+      guideButton.textContent =
+        "📖 Guiding You Through Scripture...";
 
-  0% {
-    transform: scale(1);
-    opacity: .85;
+      // Gentle Anchor Breath
+      anchorMark.classList.add("anchor-breath");
+
+      // Show quiet moment
+      quietMoment.classList.remove("hidden");
+
+      requestAnimationFrame(() => {
+        quietMoment.classList.add("show");
+      });
+
+
+      // Pause before revealing Scripture
+      setTimeout(() => {
+
+        quietMoment.classList.remove("show");
+
+        setTimeout(() => {
+          quietMoment.classList.add("hidden");
+        }, 500);
+
+        scriptureCard.classList.remove("hidden");
+
+        guideButton.classList.add("fade-out");
+
+        scriptureCard.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        // Reset anchor animation
+        anchorMark.classList.remove("anchor-breath");
+
+      }, 1200);
+
+    });
+
   }
 
-  50% {
-    transform: scale(1.08);
-    opacity: 1;
-    box-shadow:
-      0 0 35px rgba(230,189,104,.35);
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: .85;
-  }
-}
+});
