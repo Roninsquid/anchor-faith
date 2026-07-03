@@ -48,17 +48,29 @@ document.addEventListener("DOMContentLoaded", () => {
     greeting.textContent = randomGreeting;
   }
 
-  // Guide button
+  // Guide button + quiet moment
   const guideButton = document.getElementById("guideButton");
   const scriptureCard = document.getElementById("scriptureCard");
   const quietMoment = document.getElementById("quietMoment");
-  if (guideButton && scriptureCard) {
+
+  if (guideButton && scriptureCard && quietMoment) {
     guideButton.addEventListener("click", () => {
       guideButton.textContent = "📖 Guiding You Through Scripture...";
 
-      setTimeout(() => {
-        scriptureCard.classList.remove("hidden");
+      quietMoment.classList.remove("hidden");
 
+      requestAnimationFrame(() => {
+        quietMoment.classList.add("show");
+      });
+
+      setTimeout(() => {
+        quietMoment.classList.remove("show");
+
+        setTimeout(() => {
+          quietMoment.classList.add("hidden");
+        }, 500);
+
+        scriptureCard.classList.remove("hidden");
         guideButton.classList.add("fade-out");
 
         scriptureCard.scrollIntoView({
