@@ -1,4 +1,4 @@
-alert("app.js is running!");
+console.log("Anchor Alpha ready.");
 
 document.addEventListener("DOMContentLoaded", () => {
   const greeting = document.getElementById("dailyGreeting");
