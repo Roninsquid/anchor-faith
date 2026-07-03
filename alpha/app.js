@@ -45,5 +45,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const randomGreeting =
     options[Math.floor(Math.random() * options.length)];
 
-  greeting.textContent = randomGreeting + " 🌅";
+  greeting.textContent = randomGreeting;
 });
