@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anchor Alpha</title>
   <link rel="stylesheet" href="components.css">
+
   <style>
     :root {
-      --bg: #07111f;
       --cream: #fff3d6;
       --muted: #c9bfae;
       --gold: #e6bd68;
@@ -16,9 +16,7 @@
       --shadow: 0 30px 90px rgba(0,0,0,0.35);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -113,7 +111,14 @@
       display: block;
       font-size: 1.1rem;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
+    }
+
+    .helper-text {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     textarea {
@@ -175,27 +180,7 @@
       <p class="eyebrow">Anchor Alpha</p>
       <h1>Peace be with you.</h1>
     </div>
-<section class="scripture-card fade-up">
 
-  <p class="anchor-section-title">
-    📖 God's Word
-  </p>
-
-  <blockquote>
-    “The Lord is close to the brokenhearted and saves those who are crushed in spirit.”
-  </blockquote>
-
-  <p class="scripture-ref">
-    Psalm 34:18
-  </p>
-
-  <div class="scripture-divider"></div>
-
-  <p class="scripture-note">
-    Sit with these words for a moment before continuing.
-  </p>
-
-</section>
     <p class="sub">
       Take a moment. Breathe. God is with you.
     </p>
@@ -206,13 +191,39 @@
     </p>
 
     <section class="search-card">
-      <label for="heartInput">What’s on your heart today?</label>
-      <textarea id="heartInput" placeholder="I’m feeling anxious, grieving, overwhelmed, doubtful, or unsure where to begin..."></textarea>
-      <button>Find Scripture</button>
+      <label for="heartInput">What is weighing on your heart today?</label>
+      <p class="helper-text">
+        You don’t need to have the right words. Start where you are.
+      </p>
+
+      <textarea id="heartInput" placeholder="I’m feeling anxious, grieving, overwhelmed, doubtful, angry, or unsure where to begin..."></textarea>
+
+      <button>📖 Guide Me Through Scripture</button>
+    </section>
+
+    <section class="scripture-card fade-up">
+      <p class="anchor-section-title">
+        📖 God's Word
+      </p>
+
+      <blockquote>
+        “The Lord is close to the brokenhearted and saves those who are crushed in spirit.”
+      </blockquote>
+
+      <p class="scripture-ref">
+        Psalm 34:18
+      </p>
+
+      <div class="scripture-divider"></div>
+
+      <p class="scripture-note">
+        Sit with these words for a moment before continuing.
+      </p>
     </section>
 
     <p class="breath">Take a deep breath. God is with you.</p>
   </main>
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
 </body>
 </html>
