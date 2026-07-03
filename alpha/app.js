@@ -1,7 +1,11 @@
 console.log("Anchor Alpha ready.");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Greeting
+
+  // =========================
+  // Time-based Greeting
+  // =========================
+
   const greeting = document.getElementById("dailyGreeting");
 
   if (greeting) {
@@ -48,26 +52,35 @@ document.addEventListener("DOMContentLoaded", () => {
     greeting.textContent = randomGreeting;
   }
 
-  // Guide button + quiet moment
+
+  // =========================
+  // Guide Through Scripture
+  // =========================
+
   const guideButton = document.getElementById("guideButton");
   const scriptureCard = document.getElementById("scriptureCard");
   const quietMoment = document.getElementById("quietMoment");
+  const breathLine = document.getElementById("breathLine");
 
-  if (guideButton && scriptureCard && quietMoment) {
+  if (guideButton && scriptureCard && quietMoment && breathLine) {
     guideButton.addEventListener("click", () => {
       guideButton.textContent = "📖 Guiding You Through Scripture...";
 
       quietMoment.classList.remove("hidden");
+      breathLine.classList.remove("hidden");
 
       requestAnimationFrame(() => {
         quietMoment.classList.add("show");
+        breathLine.classList.add("show");
       });
 
       setTimeout(() => {
         quietMoment.classList.remove("show");
+        breathLine.classList.remove("show");
 
         setTimeout(() => {
           quietMoment.classList.add("hidden");
+          breathLine.classList.add("hidden");
         }, 500);
 
         scriptureCard.classList.remove("hidden");
