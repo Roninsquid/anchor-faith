@@ -142,3 +142,26 @@ Anchor Alpha Design System
 .quiet-message.show {
   opacity: 1;
 }
+.anchor-breath {
+  animation: anchorBreath 1.2s ease;
+}
+
+@keyframes anchorBreath {
+
+  0% {
+    transform: scale(1);
+    opacity: .85;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    box-shadow:
+      0 0 35px rgba(230,189,104,.35);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: .85;
+  }
+}
