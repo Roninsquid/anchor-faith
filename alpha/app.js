@@ -47,3 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   greeting.textContent = randomGreeting;
 });
+const guideButton = document.getElementById("guideButton");
+const scriptureCard = document.getElementById("scriptureCard");
+
+if (guideButton && scriptureCard) {
+  guideButton.addEventListener("click", () => {
+    guideButton.textContent = "📖 Guiding You Through Scripture...";
+
+    setTimeout(() => {
+      scriptureCard.classList.remove("hidden");
+      guideButton.textContent = "📖 Guide Me Through Scripture";
+      scriptureCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 1200);
+  });
+}
