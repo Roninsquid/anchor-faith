@@ -120,3 +120,6 @@ Anchor Alpha Design System
   line-height: 1.45;
   letter-spacing: -0.03em;
 }
+.hidden {
+  display: none;
+}
