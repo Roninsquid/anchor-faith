@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Guide button
   const guideButton = document.getElementById("guideButton");
   const scriptureCard = document.getElementById("scriptureCard");
-
+  const quietMoment = document.getElementById("quietMoment");
   if (guideButton && scriptureCard) {
     guideButton.addEventListener("click", () => {
       guideButton.textContent = "📖 Guiding You Through Scripture...";
