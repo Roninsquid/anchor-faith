@@ -56,8 +56,12 @@ if (guideButton && scriptureCard) {
 
     setTimeout(() => {
       scriptureCard.classList.remove("hidden");
-      guideButton.textContent = "📖 Guide Me Through Scripture";
-      scriptureCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      guideButton.classList.add("fade-out");
+
+      scriptureCard.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
     }, 1200);
   });
 }
