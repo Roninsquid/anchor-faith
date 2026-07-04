@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const breathLine = document.getElementById("breathLine");
   const heartInput = document.getElementById("heartInput");
 
+  const reflectionText = document.getElementById("reflectionText");
+  const prayerText = document.getElementById("prayerText");
+  const nextStepText = document.getElementById("nextStepText");
+  const continueReadingList = document.getElementById("continueReadingList");
+
   // Greeting
   if (greeting) {
     const hour = new Date().getHours();
@@ -30,7 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Guided Scripture
-  if (guideButton && scriptureCard && quietMoment && heartInput) {
+  if (
+    guideButton &&
+    scriptureCard &&
+    quietMoment &&
+    heartInput &&
+    reflectionText &&
+    prayerText &&
+    nextStepText &&
+    continueReadingList
+  ) {
     guideButton.addEventListener("click", () => {
       const userText = heartInput.value;
       const journey = findJourney(userText);
@@ -43,7 +57,19 @@ document.addEventListener("DOMContentLoaded", () => {
           journey.scripture.reference;
 
         scriptureCard.querySelector(".scripture-note").textContent =
-          journey.note;
+          journey.opening;
+
+        reflectionText.textContent = journey.reflection;
+        prayerText.textContent = journey.prayer;
+        nextStepText.textContent = journey.nextStep;
+
+        continueReadingList.innerHTML = "";
+
+        journey.continueReading.forEach((reading) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = reading;
+          continueReadingList.appendChild(listItem);
+        });
       }
 
       guideButton.textContent = "📖 Guiding You Through Scripture...";
