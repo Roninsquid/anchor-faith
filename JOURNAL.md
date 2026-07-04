@@ -84,3 +84,23 @@ May it be known for kindness.
 ⚓
 
 *A place to begin again.*
+
+## Entry 002 — Anchor's First Breath
+
+Today, Anchor listened.
+
+For the first time, it received words from a visitor and responded with a journey instead of a static page.
+
+It was only one journey.
+
+One Scripture.
+
+One thoughtful decision.
+
+But every meaningful ministry begins with one person.
+
+We smiled.
+
+Then we committed the code.
+
+⚓
