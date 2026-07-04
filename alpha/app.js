@@ -64,6 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (guideButton && scriptureCard && quietMoment && breathLine) {
     guideButton.addEventListener("click", () => {
+      const userText = document.getElementById("heartInput").value;
+
+  const journey = findJourney(userText);
       guideButton.textContent = "📖 Guiding You Through Scripture...";
 
       quietMoment.classList.remove("hidden");
@@ -73,7 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
         quietMoment.classList.add("show");
         breathLine.classList.add("show");
       });
+      if (journey) {
 
+  scriptureCard.querySelector("blockquote").textContent =
+    journey.scripture.text;
+
+  scriptureCard.querySelector(".scripture-ref").textContent =
+    journey.scripture.reference;
+
+  scriptureCard.querySelector(".scripture-note").textContent =
+    journey.note;
+      }
       setTimeout(() => {
         quietMoment.classList.remove("show");
         breathLine.classList.remove("show");
