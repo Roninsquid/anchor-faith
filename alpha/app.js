@@ -1,99 +1,80 @@
 console.log("Anchor Alpha ready.");
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  // =========================
-  // Time-based Greeting
-  // =========================
-
   const greeting = document.getElementById("dailyGreeting");
-
-  if (greeting) {
-    const hour = new Date().getHours();
-
-    const greetings = {
-      night: [
-        "You're not alone tonight.",
-        "Rest here for a while.",
-        "Peace be with you."
-      ],
-      morning: [
-        "Good morning.",
-        "His mercies are new every morning.",
-        "Peace be with you."
-      ],
-      afternoon: [
-        "Welcome.",
-        "Take heart.",
-        "Grace be with you today."
-      ],
-      evening: [
-        "The day is ending.",
-        "Come and rest.",
-        "Peace be with you."
-      ]
-    };
-
-    let options;
-
-    if (hour < 5) {
-      options = greetings.night;
-    } else if (hour < 12) {
-      options = greetings.morning;
-    } else if (hour < 17) {
-      options = greetings.afternoon;
-    } else {
-      options = greetings.evening;
-    }
-
-    const randomGreeting =
-      options[Math.floor(Math.random() * options.length)];
-
-    greeting.textContent = randomGreeting;
-  }
-
-
-  // =========================
-  // Guide Through Scripture
-  // =========================
-
   const guideButton = document.getElementById("guideButton");
   const scriptureCard = document.getElementById("scriptureCard");
   const quietMoment = document.getElementById("quietMoment");
   const breathLine = document.getElementById("breathLine");
+  const heartInput = document.getElementById("heartInput");
 
-  if (guideButton && scriptureCard && quietMoment && breathLine) {
+  // Greeting
+  if (greeting) {
+    const hour = new Date().getHours();
+
+    const greetings = {
+      night: ["You're not alone tonight.", "Rest here for a while.", "Peace be with you."],
+      morning: ["Good morning.", "His mercies are new every morning.", "Peace be with you."],
+      afternoon: ["Welcome.", "Take heart.", "Grace be with you today."],
+      evening: ["The day is ending.", "Come and rest.", "Peace be with you."]
+    };
+
+    let options;
+
+    if (hour < 5) options = greetings.night;
+    else if (hour < 12) options = greetings.morning;
+    else if (hour < 17) options = greetings.afternoon;
+    else options = greetings.evening;
+
+    greeting.textContent = options[Math.floor(Math.random() * options.length)];
+  }
+
+  // Guided Scripture
+  if (guideButton && scriptureCard && quietMoment && heartInput) {
     guideButton.addEventListener("click", () => {
-      const userText = document.getElementById("heartInput").value;
+      const userText = heartInput.value;
+      const journey = findJourney(userText);
 
-  const journey = findJourney(userText);
+      if (journey) {
+        scriptureCard.querySelector("blockquote").textContent =
+          journey.scripture.text;
+
+        scriptureCard.querySelector(".scripture-ref").textContent =
+          journey.scripture.reference;
+
+        scriptureCard.querySelector(".scripture-note").textContent =
+          journey.note;
+      }
+
       guideButton.textContent = "📖 Guiding You Through Scripture...";
 
       quietMoment.classList.remove("hidden");
-      breathLine.classList.remove("hidden");
+
+      if (breathLine) {
+        breathLine.classList.remove("hidden");
+      }
 
       requestAnimationFrame(() => {
         quietMoment.classList.add("show");
-        breathLine.classList.add("show");
+
+        if (breathLine) {
+          breathLine.classList.add("show");
+        }
       });
-      if (journey) {
 
-  scriptureCard.querySelector("blockquote").textContent =
-    journey.scripture.text;
-
-  scriptureCard.querySelector(".scripture-ref").textContent =
-    journey.scripture.reference;
-
-  scriptureCard.querySelector(".scripture-note").textContent =
-    journey.note;
-      }
       setTimeout(() => {
         quietMoment.classList.remove("show");
-        breathLine.classList.remove("show");
+
+        if (breathLine) {
+          breathLine.classList.remove("show");
+        }
 
         setTimeout(() => {
           quietMoment.classList.add("hidden");
-          breathLine.classList.add("hidden");
+
+          if (breathLine) {
+            breathLine.classList.add("hidden");
+          }
         }, 500);
 
         scriptureCard.classList.remove("hidden");
