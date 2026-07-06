@@ -62,7 +62,9 @@ const journeys = [
 function findJourney(input) {
   const text = input.toLowerCase();
 
-  return journeys.find((journey) =>
+  const match = journeys.find((journey) =>
     journey.keywords.some((keyword) => text.includes(keyword))
   );
+
+  return match || journeys.find((journey) => journey.id === "begin-again");
 }
