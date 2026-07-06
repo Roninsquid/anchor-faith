@@ -1,4 +1,27 @@
 const journeys = [
+    {
+    id: "begin-again",
+    title: "Begin Again",
+    keywords: [],
+    opening:
+      "Welcome. You do not need to know exactly what to say. Sometimes we arrive with clear questions. Sometimes we simply arrive. Either way, you are welcome here.",
+    scripture: {
+      reference: "Matthew 11:28",
+      text: "Come to me, all who labor and are heavy laden, and I will give you rest."
+    },
+    reflection:
+      "What brought you here today?",
+    prayer:
+      "Father, I may not even know what I need right now. Thank You for meeting me here. Help me quiet my heart and guide my next step. Amen.",
+    nextStep:
+      "Take one slow breath. Read Matthew 11. Do not rush. Simply begin.",
+    continueReading: [
+      "Matthew 11",
+      "Psalm 23",
+      "John 14:27",
+      "Psalm 46:10"
+    ]
+  },
   {
     id: "peace-in-the-storm",
     title: "Peace in the Storm",
