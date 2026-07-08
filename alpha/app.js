@@ -1,5 +1,3 @@
-console.log("Anchor Alpha ready.");
-
 document.addEventListener("DOMContentLoaded", () => {
   const greeting = document.getElementById("dailyGreeting");
   const guideButton = document.getElementById("guideButton");
@@ -8,109 +6,116 @@ document.addEventListener("DOMContentLoaded", () => {
   const breathLine = document.getElementById("breathLine");
   const heartInput = document.getElementById("heartInput");
 
+  const scriptureText = scriptureCard.querySelector("blockquote");
+  const scriptureRef = scriptureCard.querySelector(".scripture-ref");
+  const scriptureNote = scriptureCard.querySelector(".scripture-note");
+
   const reflectionText = document.getElementById("reflectionText");
   const prayerText = document.getElementById("prayerText");
   const nextStepText = document.getElementById("nextStepText");
   const continueReadingList = document.getElementById("continueReadingList");
 
-  // Greeting
-  if (greeting) {
-    const hour = new Date().getHours();
+  let hasGuided = false;
 
-    const greetings = {
-      night: ["You're not alone tonight.", "Rest here for a while.", "Peace be with you."],
-      morning: ["Good morning.", "His mercies are new every morning.", "Peace be with you."],
-      afternoon: ["Welcome.", "Take heart.", "Grace be with you today."],
-      evening: ["The day is ending.", "Come and rest.", "Peace be with you."]
-    };
+  const greetings = {
+    night: "You are not alone tonight.",
+    morning: "Good morning. Begin again with grace.",
+    afternoon: "Take a quiet moment with God.",
+    evening: "Rest your heart for a moment."
+  };
 
-    let options;
+  const hour = new Date().getHours();
 
-    if (hour < 5) options = greetings.night;
-    else if (hour < 12) options = greetings.morning;
-    else if (hour < 17) options = greetings.afternoon;
-    else options = greetings.evening;
-
-    greeting.textContent = options[Math.floor(Math.random() * options.length)];
+  if (hour < 5) {
+    greeting.textContent = greetings.night;
+  } else if (hour < 12) {
+    greeting.textContent = greetings.morning;
+  } else if (hour < 18) {
+    greeting.textContent = greetings.afternoon;
+  } else {
+    greeting.textContent = greetings.evening;
   }
 
-  // Guided Scripture
-  if (
-    guideButton &&
-    scriptureCard &&
-    quietMoment &&
-    heartInput &&
-    reflectionText &&
-    prayerText &&
-    nextStepText &&
-    continueReadingList
-  ) {
-    guideButton.addEventListener("click", () => {
-      const userText = heartInput.value;
-      const journey = findJourney(userText);
+  function renderJourney(journey) {
+    scriptureText.textContent = journey.scripture.text;
+    scriptureRef.textContent = journey.scripture.reference;
+    scriptureNote.textContent = journey.opening;
 
-      if (journey) {
-        scriptureCard.querySelector("blockquote").textContent =
-          journey.scripture.text;
+    reflectionText.textContent = journey.reflection;
+    prayerText.textContent = journey.prayer;
+    nextStepText.textContent = journey.nextStep;
 
-        scriptureCard.querySelector(".scripture-ref").textContent =
-          journey.scripture.reference;
+    continueReadingList.innerHTML = "";
 
-        scriptureCard.querySelector(".scripture-note").textContent =
-          journey.opening;
-
-        reflectionText.textContent = journey.reflection;
-        prayerText.textContent = journey.prayer;
-        nextStepText.textContent = journey.nextStep;
-
-        continueReadingList.innerHTML = "";
-
-        journey.continueReading.forEach((reading) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = reading;
-          continueReadingList.appendChild(listItem);
-        });
-      }
-
-      guideButton.textContent = "📖 Guiding You Through Scripture...";
-
-      quietMoment.classList.remove("hidden");
-
-      if (breathLine) {
-        breathLine.classList.remove("hidden");
-      }
-
-      requestAnimationFrame(() => {
-        quietMoment.classList.add("show");
-
-        if (breathLine) {
-          breathLine.classList.add("show");
-        }
-      });
-
-      setTimeout(() => {
-        quietMoment.classList.remove("show");
-
-        if (breathLine) {
-          breathLine.classList.remove("show");
-        }
-
-        setTimeout(() => {
-          quietMoment.classList.add("hidden");
-
-          if (breathLine) {
-            breathLine.classList.add("hidden");
-          }
-        }, 500);
-
-        scriptureCard.classList.remove("hidden");
-        guideButton.classList.add("fade-out");
-
-        scriptureCard.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 1200);
+    journey.continueReading.forEach((reading) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = reading;
+      continueReadingList.appendChild(listItem);
     });
   }
+
+  function addNewReflectionButton() {
+    let newReflectionButton = document.getElementById("newReflectionButton");
+
+    if (!newReflectionButton) {
+      newReflectionButton = document.createElement("button");
+      newReflectionButton.id = "newReflectionButton";
+      newReflectionButton.type = "button";
+      newReflectionButton.textContent = "Share Something Else";
+
+      // Copy the main button styling so it feels native to Anchor.
+      newReflectionButton.className = guideButton.className;
+
+      newReflectionButton.addEventListener("click", () => {
+        heartInput.value = "";
+        heartInput.focus();
+
+        window.scrollTo({
+          top: heartInput.offsetTop - 120,
+          behavior: "smooth"
+        });
+      });
+
+      scriptureCard.appendChild(newReflectionButton);
+    }
+  }
+
+  guideButton.addEventListener("click", () => {
+    const userText = heartInput.value.trim();
+    const journey = findJourney(userText);
+
+    renderJourney(journey);
+
+    guideButton.disabled = true;
+    guideButton.classList.remove("fade-out");
+    guideButton.textContent = "📖 Guiding You Through Scripture...";
+
+    quietMoment.classList.remove("hidden");
+
+    if (breathLine) {
+      breathLine.classList.remove("hidden");
+    }
+
+    scriptureCard.classList.add("hidden");
+
+    setTimeout(() => {
+      quietMoment.classList.add("hidden");
+
+      if (breathLine) {
+        breathLine.classList.add("hidden");
+      }
+
+      scriptureCard.classList.remove("hidden");
+      addNewReflectionButton();
+
+      hasGuided = true;
+      guideButton.disabled = false;
+      guideButton.textContent = "⚓ Begin Another Reflection";
+
+      scriptureCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 1200);
+  });
 });
