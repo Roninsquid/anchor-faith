@@ -157,3 +157,31 @@ And so did a dream.
 ⚓
 
 *A place to begin again.*
+
+---
+
+## Entry 003 — The AI Covenant
+
+Today we wrote the Anchor AI Covenant.
+
+This document marks an important threshold in the life of Anchor.
+
+We began discussing how artificial intelligence might someday help Anchor listen more carefully, recognize what someone may be carrying, and guide them toward Scripture with gentleness and humility.
+
+But before writing AI code, we wrote boundaries.
+
+Anchor may use AI, but AI must never become the voice of God, Scripture, pastor, prophet, therapist, or judge.
+
+Human help is holy, not failure.
+
+This became one of the clearest truths of the day.
+
+If Anchor ever detects that someone may be in danger, it must not try to be clever or devotional. It must become clear, compassionate, and urgent, pointing the person toward immediate human help.
+
+Today we chose caution not because we are afraid of building something powerful, but because we want to build something faithful.
+
+The lighthouse comes before the engine.
+
+⚓
+
+*A place to begin again.*
